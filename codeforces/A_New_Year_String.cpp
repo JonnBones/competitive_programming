@@ -10,28 +10,17 @@ mt19937_64 RNG(chrono::steady_clock::now().time_since_epoch().count());
 
 void solve()
 {
-   int n=3;
-   vector<int>cap(n);
-   vector<int>arr(n);
-   for(int i=0;i<n;i++)
+   int n;cin>>n;
+   string str;cin>>str;
+   bool has2026 =(str.find("2026")!=string ::npos);
+   bool has2025 = (str.find("2025")!=string::npos);
+   if(has2025 && !has2026)
    {
-     cin>>cap[i]>>arr[i];
+    cout<<1;nl;
    }
-   
-   for(int i=0;i<100;i++)
+   else
    {
-    int a=i%3;
-    int b=(i+1)%3;
-    
-    int add = min(arr[a],cap[(i+1)%3]-arr[b]);
-    
-    arr[a]=arr[a]-add;
-    arr[b]=arr[b]+add;
-   }
-   
-   for(int i=0;i<3;i++)
-   {
-    cout<<arr[i];nl;
+    cout<<0;nl;
    }
 }
 
@@ -41,13 +30,13 @@ int32_t main()
     auto begin = std::chrono::high_resolution_clock::now();
     int t;
     t=1;
-    // cin>>t;
+    cin>>t;
     while(t--)
     {
         solve();
     }
     auto end = std::chrono::high_resolution_clock::now();
     auto elapsed = std::chrono::duration_cast<std::chrono::nanoseconds>(end - begin);
-    cerr << "Time measured: " << elapsed.count() * 1e-9 << " seconds.\n";
+    //cerr << "Time measured: " << elapsed.count() * 1e-9 << " seconds.\n";
     return 0;
 }

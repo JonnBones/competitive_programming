@@ -10,29 +10,37 @@ mt19937_64 RNG(chrono::steady_clock::now().time_since_epoch().count());
 
 void solve()
 {
-   int n=3;
-   vector<int>cap(n);
-   vector<int>arr(n);
-   for(int i=0;i<n;i++)
+   int x,y;cin>>x>>y;
+   if(y==0 && x%3==0)
    {
-     cin>>cap[i]>>arr[i];
+    cout<<"YES";nl;
+    return;
    }
-   
-   for(int i=0;i<100;i++)
+   // else if(x <= abs(y))
+   // {
+   //  cout<<"NO";nl;
+   //  return;
+   // }
+   else if(y>0)
    {
-    int a=i%3;
-    int b=(i+1)%3;
-    
-    int add = min(arr[a],cap[(i+1)%3]-arr[b]);
-    
-    arr[a]=arr[a]-add;
-    arr[b]=arr[b]+add;
+    int a = x-(y*2);
+    if(a%3==0 && (a==0 || a>=3))
+    {
+        cout<<"YES";nl;
+        return;
+    }
    }
-   
-   for(int i=0;i<3;i++)
+   else if(y<0)
    {
-    cout<<arr[i];nl;
+    int a = x-(abs(y)*4);
+    if(a%3==0 && (a==0 || a>=3))
+    {
+        cout<<"YES";nl;
+        return ;
+    }
    }
+   cout<<"NO";nl;
+
 }
 
 int32_t main()
@@ -41,7 +49,7 @@ int32_t main()
     auto begin = std::chrono::high_resolution_clock::now();
     int t;
     t=1;
-    // cin>>t;
+    cin>>t;
     while(t--)
     {
         solve();

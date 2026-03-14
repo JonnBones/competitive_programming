@@ -10,29 +10,29 @@ mt19937_64 RNG(chrono::steady_clock::now().time_since_epoch().count());
 
 void solve()
 {
-   int n=3;
-   vector<int>cap(n);
+   int n;cin>>n;
    vector<int>arr(n);
    for(int i=0;i<n;i++)
    {
-     cin>>cap[i]>>arr[i];
+    cin>>arr[i];
    }
-   
-   for(int i=0;i<100;i++)
+
+   int maxi=INT_MIN;
+   int index=-1;
+   for(int i=0;i<n;i++)
    {
-    int a=i%3;
-    int b=(i+1)%3;
-    
-    int add = min(arr[a],cap[(i+1)%3]-arr[b]);
-    
-    arr[a]=arr[a]-add;
-    arr[b]=arr[b]+add;
+    if(arr[i]>maxi)
+    {
+        maxi=arr[i];
+        index=i;
+    }
    }
-   
-   for(int i=0;i<3;i++)
+   swap(arr[0],arr[index]);
+   for(auto i:arr)
    {
-    cout<<arr[i];nl;
+    cout<<i<<" ";
    }
+   nl;
 }
 
 int32_t main()
@@ -41,7 +41,7 @@ int32_t main()
     auto begin = std::chrono::high_resolution_clock::now();
     int t;
     t=1;
-    // cin>>t;
+    cin>>t;
     while(t--)
     {
         solve();

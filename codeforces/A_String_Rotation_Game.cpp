@@ -10,29 +10,21 @@ mt19937_64 RNG(chrono::steady_clock::now().time_since_epoch().count());
 
 void solve()
 {
-   int n=3;
-   vector<int>cap(n);
-   vector<int>arr(n);
-   for(int i=0;i<n;i++)
+   int n;cin>>n;
+   string str;cin>>str;
+   int cnt=1;
+   for(int i=1;i<n;i++)
    {
-     cin>>cap[i]>>arr[i];
+    if(str[i-1]!=str[i])
+    {
+        cnt++;
+    }
    }
-   
-   for(int i=0;i<100;i++)
+   if(cnt!=n && str[0]!=str[n-1])
    {
-    int a=i%3;
-    int b=(i+1)%3;
-    
-    int add = min(arr[a],cap[(i+1)%3]-arr[b]);
-    
-    arr[a]=arr[a]-add;
-    arr[b]=arr[b]+add;
+    cnt++;
    }
-   
-   for(int i=0;i<3;i++)
-   {
-    cout<<arr[i];nl;
-   }
+   cout<<cnt;nl;
 }
 
 int32_t main()
@@ -41,13 +33,13 @@ int32_t main()
     auto begin = std::chrono::high_resolution_clock::now();
     int t;
     t=1;
-    // cin>>t;
+    cin>>t;
     while(t--)
     {
         solve();
     }
     auto end = std::chrono::high_resolution_clock::now();
     auto elapsed = std::chrono::duration_cast<std::chrono::nanoseconds>(end - begin);
-    cerr << "Time measured: " << elapsed.count() * 1e-9 << " seconds.\n";
+    //cerr << "Time measured: " << elapsed.count() * 1e-9 << " seconds.\n";
     return 0;
 }
