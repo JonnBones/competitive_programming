@@ -10,28 +10,17 @@ mt19937_64 RNG(chrono::steady_clock::now().time_since_epoch().count());
 
 void solve()
 {
-   int n;cin>>n;int a;cin>>a;
-   int below =0;int above=0;
-   for(int i=0;i<n;i++)
-   {
-    int x;cin>>x;
-    if(x > a)
+    int n;cin>>n;
+    string str;cin>>str;
+    int cnt=0;char x=str[n-1];
+    for(int i=str.size()-2;i>=0;i--)
     {
-        above++;
+        if(str[i]!=x)
+        {
+            cnt++;
+        }
     }
-    if(x < a) 
-    {
-        below++;
-    }
-   }
-   if(above > below)
-   {
-    cout<<a+1;nl;
-   }
-   else
-   {
-    cout<<a-1;nl;
-   }
+    cout<<cnt;nl;
 }
 
 int32_t main()

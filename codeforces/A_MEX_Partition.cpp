@@ -4,34 +4,34 @@ using namespace std;
 #define ios ios::sync_with_stdio(false); cin.tie(0); cout.tie(0);
 #define nl cout<<"\n"
 #define pb push_back
-#define int long long
+// #define int long long
 #define srt(v)  sort(v.begin(),v.end())
 mt19937_64 RNG(chrono::steady_clock::now().time_since_epoch().count());
 
 void solve()
 {
-   int n;cin>>n;int a;cin>>a;
-   int below =0;int above=0;
+   int n;cin>>n;
+   vector<int>arr(n);
+   vector<bool>brr(n+1,false);
    for(int i=0;i<n;i++)
    {
-    int x;cin>>x;
-    if(x > a)
-    {
-        above++;
-    }
-    if(x < a) 
-    {
-        below++;
-    }
+    cin>>arr[i];
    }
-   if(above > below)
+
+   for(int i=0;i<=n-1;i++)
    {
-    cout<<a+1;nl;
+    brr[arr[i]]=true;
    }
-   else
+   for(int i=0;i<=n;i++)
    {
-    cout<<a-1;nl;
+    if(brr[i]==false)
+    {
+        cout<<i;nl;
+        return;
+    }
    }
+
+
 }
 
 int32_t main()

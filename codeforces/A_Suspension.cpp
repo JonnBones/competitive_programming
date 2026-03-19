@@ -10,28 +10,10 @@ mt19937_64 RNG(chrono::steady_clock::now().time_since_epoch().count());
 
 void solve()
 {
-   int n;cin>>n;int a;cin>>a;
-   int below =0;int above=0;
-   for(int i=0;i<n;i++)
-   {
-    int x;cin>>x;
-    if(x > a)
-    {
-        above++;
-    }
-    if(x < a) 
-    {
-        below++;
-    }
-   }
-   if(above > below)
-   {
-    cout<<a+1;nl;
-   }
-   else
-   {
-    cout<<a-1;nl;
-   }
+   int n;cin>>n;
+   int y;cin>>y;int r;cin>>r;
+   int ans=r+min((n-r),y/2);
+   cout<<ans;nl;
 }
 
 int32_t main()
